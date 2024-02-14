@@ -1,0 +1,65 @@
+<html id ='bg'> 
+<link rel="stylesheet" href="Survey_proj.css"> 
+<body> 
+<header> 
+    <!-- -->
+    <h1 id="header"> Kitty Cat Survey Form!!* </h1>
+</header>
+<main>             
+    <form>
+        Name: <input id='userInput' type="text"> 
+    </form>
+
+    
+        <p id="txtCat"> Which cat you feeling???</p>  
+        <form id ='which_cat'> 
+        <img src="https://media.tenor.com/gWRoYtw_NpwAAAAM/cat-cat-jam.gif" id="img0">
+
+        <img src="https://i.postimg.cc/ht7JqKFN/IMG-3119.jpg" id="img1"> 
+
+        <img src="https://pbs.twimg.com/profile_images/1747872362736103424/rrvbrN8m_400x400.jpg" id="img2">   
+
+    </form>
+              
+        <style>
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; 
+        }
+        .button-container button {
+            flex: 2; 
+            margin: 5px;
+        }
+        </style>
+        <div id="buttons" class="button-container"> 
+        <input type="checkbox" id = "k1">Kitty Cat1</button>
+        <input type="checkbox" id = "k2">Kitty Cat2</button>
+        <input type="checkbox" id = "k3">Kitty Cat3</button>
+        </div> 
+        
+        <script>
+            function saveUserInput() {
+                let amt_of_cat = 0;                 
+                if (k1.checked == true){    
+                    amt_of_cat = 1; 
+                }else if(k2.checked == true){
+                    amt_of_cat = 2; 
+                }else if(k3.checked == true){ 
+                    amt_of_cat = 3;   
+                }
+                localStorage.setItem('amCat1',amt_of_cat); 
+
+                let userInput = document.getElementById('userInput').value;
+                localStorage.setItem('nameVar', userInput);
+            }
+            </script>  
+            <div class="middle"> 
+                <a href=Submit.html> 
+    <button class = "btn btn1" onclick = "saveUserInput()" >  Submit!!  </button>
+            </a>  
+    </div> 
+    <script src =  "Survey_proj.js"> </script> 
+        </main>   
+    </body>
+</html> 

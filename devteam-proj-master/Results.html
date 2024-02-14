@@ -1,0 +1,98 @@
+                           <!DOCTYPE html>
+<html lang="en">
+<link rel="script" href = "Survey_proj.js"> 
+<link rel="stylesheet" href="Survey_proj.css"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <button class ="btn btn3" onclick = "names()" type="button"> Load Results...</button>
+   
+    <h1> Cat you chose </h1>
+    <h2 id ='catNum1'></h2>
+
+    <style> body{background-color: blanchedalmond; color: cadetblue; text-align: center;}</style>    
+    <img src="https://t3.ftcdn.net/jpg/01/09/84/42/360_F_109844212_NnLGUrn3RgMHQIuqSiLGlc9d419eK2dX.jpg" id="img1"> 
+
+    <h1 id = "nameAge"> </h1> 
+    
+    <button onclick="soundFunc()" class ='btn btn4'> Play!</button>
+
+    <audio id="audioPlayer" src="audio/5 minutes of silence (128kbps).mp3"></audio>
+ 
+    <p id = 'Timer'><span id='currentTime'></span><span id='duration'></span></p></p>
+    <h1 id="currSong"> </h1>
+
+<body>
+
+    
+
+    <script>
+        let amC1 = localStorage.getItem('amCat1');  
+        function soundFunc() {
+            let audio = document.getElementById('audioPlayer');
+            var buttons = document.getElementsByClassName('btn4');
+            if (audio.paused) {
+                audio.play();
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].innerHTML = "Pause!";
+                }
+            } else {
+                audio.pause();
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].innerHTML = "Play!";
+                }
+            }
+        }
+    </script>
+
+    <script> 
+    function names(){ 
+        const audio1 = document.getElementById("audioPlayer");
+        const durationSpan = document.getElementById("duration");
+        const currentTimeSpan = document.getElementById("currentTime");
+
+        audio1.addEventListener("loadedmetadata", function() {
+            const duration = audio1.duration;
+            const minutes = Math.floor(duration / 60);
+            const seconds = Math.floor(duration % 60);
+            durationSpan.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        });
+
+        audio1.addEventListener("timeupdate", function() {
+            const currentTime = audio1.currentTime;
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = Math.floor(currentTime % 60);
+            currentTimeSpan.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds +"/";
+        });
+
+
+
+        
+        let audio = document.getElementById('audioPlayer');
+        let storedName = localStorage.getItem('nameVar');  
+        let amC1 = localStorage.getItem('amCat1');  
+        let amC2 = localStorage.getItem('amCat2');
+        let amC3 = localStorage.getItem('amCat3');
+        nameAge.innerHTML = storedName; 
+        if (amC1 == 1){
+            document.getElementById("img1").src="https://media.tenor.com/gWRoYtw_NpwAAAAM/cat-cat-jam.gif";
+            document.getElementById("currSong").innerHTML = '"Coat I Would Buy - Joeyy"'
+            audio.src = "audio/Coat I Would Buy (128kbps).mp3";
+            catNum1.innerHTML = 'Grooving Cat'
+        } 
+        if (amC1 == 2){
+            document.getElementById("img1").src="https://i.postimg.cc/ht7JqKFN/IMG-3119.jpg";
+            audio.src = "audio/Friday I_'m in Love (128kbps).mp3";
+            document.getElementById("currSong").innerHTML = '"Friday Im in Love - The Cure"'
+            catNum1.innerHTML = "Loving Cat"
+        }     
+        if (amC1 == 3){
+            document.getElementById("img1").src="https://pbs.twimg.com/profile_images/1747872362736103424/rrvbrN8m_400x400.jpg";
+            audio.src = "audio/Nirvana - Something In The Way (Audio) (128kbps).mp3";
+            document.getElementById("currSong").innerHTML = '"Something In The Way - Nirvana"'
+            catNum1.innerHTML = "Suspicious Cat"}           
+    } 
+    </script>
+</html>
